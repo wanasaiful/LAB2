@@ -2,13 +2,13 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoid2FuYXNhaWZ1bCIsImEiOiJjbGR3MGtieDUwMnN6M3Jua
 const map = new mapboxgl.Map({
     container: 'map', // Add div container ID for your map
     style: 'mapbox://styles/wanasaiful/cle3m9a0j004o01qwe6rfbzmk', // Add link to style URL
-    center: [-79.3, 43.7], // starting position [longitude, latitude]
-    zoom: 8, // starting zoom
+    center: [-79.347, 43.6510], // starting position [longitude, latitude]
+    zoom: 11, // starting zoom
 });
 
+/*ADDING SOURCE FROM A GEOJSON FILE. I WAS NOT ABLE TO UPLOAD FROM GITHUB OR MAPBOX TILESET.*/
 map.on('load', () => {
-    /*ADDING A SOURCE FROM A GEOJSON FILE*/
-    map.addSource('uoft', {
+    map.addSource('torontomovies', {
         type: 'geojson',
         data: {
             "type": "FeatureCollection",
@@ -16,47 +16,96 @@ map.on('load', () => {
                 {
                     "type": "Feature",
                     "properties": {
-                        "name": "Sidney Smith Hall"
+                        "name": "University of Toronto"
                     },
                     "geometry": {
                         "coordinates": [
-                            -79.39865237301687,
-                            43.662343395037766
+                            -79.3952226454677,
+                43.661657753111996
                         ],
-                        "type": "Point"
-                    }
-                }
+                        "type": "Point"}},
+                 {
+                     "type": "Feature",
+                     "properties": {
+                            "name": "Casa Loma"
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            -79.40936176256574,
+                            43.67806041746152
+                                ],
+                                "type": "Point"}},
+                                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Union Station"
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            -79.38066571627058,
+                43.64530660449944
+                        ],
+                        "type": "Point"}},
+                 {
+                     "type": "Feature",
+                     "properties": {
+                            "name": "Elgin and Winter Garden Theatre"
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            -79.3790037037066,
+                43.653058391765484
+                                ],
+                                "type": "Point"}},
+                {
+                     "type": "Feature",
+                     "properties": {
+                            "name": "City Hall"
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            -79.38406747486903,
+                                43.65342826123975
+                                ],
+                                "type": "Point"}},
+                                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Yonge-Dundas Square"
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            -79.3804362399624,
+                43.65598093426948
+                        ],
+                        "type": "Point"}},
+                 {
+                     "type": "Feature",
+                     "properties": {
+                            "name": "Reference Library"
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            -79.38685816931142,
+                43.67174613469504
+                                ],
+                                "type": "Point"}},                         
+
+
             ]
         }
     })
     map.addLayer({
-        'id': 'uoft-buildings',
+        'id': 'movie-buildings',
         'type': 'circle',
-        'source': 'uoft',
+        'source': 'torontomovies',
         'paint': {
             'circle-radius': 6,
-            'circle-color': '#B42222'
+            'circle-color': 'blue'
         }
     });
-});
+    });
+    
 
-/*ADDING A SOURCE FROM A MAPBOX TILESET - DATA YOU UPLOADED TO MAPBOX STUDIO*/
-map.addSource('toronto_worships', { //Your source ID
-'type': 'vector',
-'url': 'mapbox://styles/wanasaiful/cle368wlr002801lec9iv0ixz' //Your tileset link from mapbox
-});
 
-map.addLayer({
-'id': 'toronto-ct',
-'type': 'circle',
-'source': 'toronto_worships', //must match source ID from addSource method
-'paint': {
-'fill-color': '#888888',
-'fill-opacity': 0.4,
-'fill-outline-color': 'black'
-},
-'source-layer': 'places-of-worship-78x3w1' //name of layer. Get this from mapbox tileset page
-},
-'uoft-buildings' //Drawing order - place below points
-);
-
+    

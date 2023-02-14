@@ -1,7 +1,8 @@
-.map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    
-}
+.heading {background-color: dimgray;
+    color: darkolivegreen;}
+
+    .map {
+        width: 500px;
+        height: 400px;
+        margin: auto;
+        }
